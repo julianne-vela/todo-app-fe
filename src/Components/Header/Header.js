@@ -4,12 +4,20 @@ import './Header.css';
 
 export default class Header extends Component {
 	render() {
+		const { user } = this.props;
 		return (
 			<header className='header'>
 				<NavLink exact to={'/'}>
 					Home
 				</NavLink>
-				{/* <button>Sign Out</button> */}
+				{user && user.token && (
+					<>
+						<NavLink exact to={'/todos'}>
+							My Todos
+						</NavLink>
+						<button>Logout</button>
+					</>
+				)}
 			</header>
 		);
 	}
