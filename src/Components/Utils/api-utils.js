@@ -9,7 +9,7 @@ export async function signUpUser(email, password) {
 	return response.body;
 }
 
-export async function loginUser(email, password) {
+export async function signInUser(email, password) {
 	const response = await request
 		.post(`${URL}/auth/signin`)
 		.send({ email, password });
@@ -28,8 +28,8 @@ export async function getTodos(token) {
 export async function addTodo(todo, token) {
 	const response = await request
 		.post(`${URL}/api/todos`)
-		.send({ todo })
-		.set('Authorization', token);
+		.set('Authorization', token)
+		.send({ todo, completed: false });
 
 	return response.body;
 }

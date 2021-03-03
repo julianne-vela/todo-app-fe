@@ -6,9 +6,11 @@ export default class Home extends Component {
 	render() {
 		return (
 			<main className='homePage'>
-				<h1>Sign in or Create a new Account!</h1>
-				<NavLink to={'/myaccount/signin'}>Sign In</NavLink>
-				<NavLink to={'/myaccount/create'}>Create Account</NavLink>
+				<h1>
+					Welcome! Please sign in or create an account to get started!
+				</h1>
+				<NavLink to={'/signin'}>Sign In</NavLink>
+				<NavLink to={'/create-account'}>Create an Account</NavLink>
 			</main>
 		);
 	}

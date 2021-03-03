@@ -5,12 +5,12 @@ import Header from './Components/Header/Header.js';
 import Home from './Home/Home.js';
 import TodoList from './Todos/TodoList.js';
 import './App.css';
-import AuthPage from './Home/AuthPages/AuthPage.js';
 import {
 	getLocalStorage,
 	setLocalStorage,
 } from './Components/Utils/ls-utils.js';
-// import SignupForm from './Home/AuthPages/Signup.js';
+import LoginForm from './Home/AuthPages/LoginForm.js';
+import SignupForm from './Home/AuthPages/SignupForm.js';
 export default class App extends Component {
 	state = {
 		token: getLocalStorage(),
@@ -32,25 +32,28 @@ export default class App extends Component {
 					<Route
 						path='/'
 						exact
+						token={token}
 						render={(routerProps) => <Home {...routerProps} />}
 					/>
 					<Route
-						path='/myaccount/create'
+						path='/create-account'
 						exact
 						token={token}
 						render={(routerProps) => (
-							<AuthPage
+							<SignupForm
+								handleRedirect={this.handleRedirect}
 								handleTokenChange={this.handleTokenChange}
 								{...routerProps}
 							/>
 						)}
 					/>
 					<Route
-						path='/myaccount/signin'
+						path='/signin'
 						exact
 						token={token}
 						render={(routerProps) => (
-							<AuthPage
+							<LoginForm
+								handleRedirect={this.handleRedirect}
 								handleTokenChange={this.handleTokenChange}
 								{...routerProps}
 							/>
