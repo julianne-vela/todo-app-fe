@@ -1,59 +1,69 @@
 import React, { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './Components/ProtectedRoute.js';
 import Header from './Components/Header/Header.js';
 import Home from './Home/Home.js';
-import Login from './Home/AuthPages/Login.js';
-import Signup from './Home/AuthPages/Signup.js';
 import TodoList from './Todos/TodoList.js';
 import './App.css';
+import AuthPage from './Home/AuthPages/AuthPage.js';
+import {
+	getLocalStorage,
+	setLocalStorage,
+} from './Components/Utils/ls-utils.js';
+// import SignupForm from './Home/AuthPages/Signup.js';
 export default class App extends Component {
-    state = {
-        user: {
-            email: '',
-            id: '',
-            token: '',
-        }
-    }
+	state = {
+		token: getLocalStorage(),
+	};
 
-    render() {
-        const { user } = this.state;
+	handleTokenChange = (token) => {
+		this.setState({ token });
 
-        return (
-            <Router>
-                <Header />
-                <Switch>
-                    <Route
-                        path="/"
-                        exact
-                        render={(routerProps) => <Home {...routerProps} /   >}
-                    />
-                    <Route
-                        path="/login"
-                        exact
-                        render={(routerProps) => <Login {...routerProps} /  >}
-                    />
-                    <Route
-                        path="/signup"
-                        exact
-                        render={(routerProps) => <Signup {...routerProps}   />}
-                    />
-                    <ProtectedRoute
-                        path="/todos"
-                        exact
-                        token={user && user.token}
-                        render={(routerProps) => 
-                            <TodoList
-                                user={user} 
-                                {...routerProps} 
-                            />}
-                    />
-                </Switch>
-            </Router>
-        )
-    }
+		setLocalStorage(token);
+	};
+
+	render() {
+		const { token } = this.state;
+
+		return (
+			<Router>
+				<Header />
+				<Switch>
+					<Route
+						path='/'
+						exact
+						render={(routerProps) => <Home {...routerProps} />}
+					/>
+					<Route
+						path='/myaccount/create'
+						exact
+						token={token}
+						render={(routerProps) => (
+							<AuthPage
+								handleTokenChange={this.handleTokenChange}
+								{...routerProps}
+							/>
+						)}
+					/>
+					<Route
+						path='/myaccount/signin'
+						exact
+						token={token}
+						render={(routerProps) => (
+							<AuthPage
+								handleTokenChange={this.handleTokenChange}
+								{...routerProps}
+							/>
+						)}
+					/>
+					<ProtectedRoute
+						path='/todos'
+						exact
+						token={token}
+						render={(routerProps) => <TodoList {...routerProps} />}
+					/>
+				</Switch>
+			</Router>
+		);
+	}
 }
