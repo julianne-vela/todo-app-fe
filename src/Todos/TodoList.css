@@ -1,0 +1,88 @@
+.todoPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	/* width: 1440px; */
+	width: 100vw;
+	height: 800px;
+}
+
+.todoTitle {
+	display: flex;
+	padding: 10px;
+	color: white;
+	font-size: 40px;
+	line-height: 40px;
+	letter-spacing: 15px;
+	font-weight: 700;
+}
+
+.todoAdd {
+	display: flex;
+	width: 540px;
+	height: 64px;
+	background: #25273d;
+	box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.default {
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: hidden;
+	background-color: none;
+}
+
+.default:focus {
+	outline: none;
+}
+
+.oval {
+	display: flex;
+	align-self: center;
+	margin: 5px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 1px solid #393a4b;
+}
+
+.formInput {
+	display: flex;
+	align-self: center;
+	width: 100%;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 18px;
+	letter-spacing: -0.25px;
+	background: none;
+	color: #767992;
+}
+
+.todoList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 540px;
+	height: 439px;
+	background: #25273d;
+	box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+}
+
+.todo {
+	display: inline;
+	color: #c8cbe7;
+}
+
+.todo:hover {
+	cursor: pointer;
+}
+
+.completed {
+	color: #4d5067;
+	text-decoration: line-through;
+}
