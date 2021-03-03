@@ -11,12 +11,15 @@ export default class SignupForm extends Component {
 
 	render() {
 		return (
-			<main>
-				<h1>Create an Account</h1>
-				<UserForm
-					auth={signUpUser}
-					handleFormSubmit={this.handleFormSubmit}
-				/>
+			<main className='authPage'>
+				<section className='wrapper'>
+					<h1 className='title'>Create an Account</h1>
+					<UserForm
+						className='authForm'
+						auth={signUpUser}
+						handleFormSubmit={this.handleFormSubmit}
+					/>
+				</section>
 			</main>
 		);
 	}

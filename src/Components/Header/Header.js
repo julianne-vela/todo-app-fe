@@ -9,9 +9,7 @@ export default class Header extends Component {
 				<NavLink exact to={'/'}>
 					Home
 				</NavLink>
-				<NavLink exact to={'/todos'}>
-					My Todos
-				</NavLink>
+				{/* <button>Sign Out</button> */}
 			</header>
 		);
 	}

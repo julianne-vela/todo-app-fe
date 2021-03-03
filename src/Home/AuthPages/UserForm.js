@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './Signup.module.css';
+import './Auth.css';
 
 export default class UserForm extends Component {
 	state = {
@@ -18,9 +18,9 @@ export default class UserForm extends Component {
 	};
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label className={styles.label}>
-					<span>Email</span>
+			<form className='authForm' onSubmit={this.handleSubmit}>
+				<label className='label'>
+					<span>Email: </span>
 					<input
 						type='email'
 						placeholder='jane@doe.com'
@@ -29,8 +29,8 @@ export default class UserForm extends Component {
 						}
 					/>
 				</label>
-				<label className={styles.label}>
-					<span>Create a Password</span>
+				<label className='label'>
+					<span>Create a Password: </span>
 					<input
 						type='password'
 						placeholder='Enter Password'
@@ -39,7 +39,7 @@ export default class UserForm extends Component {
 						}
 					/>
 				</label>
-				<button type='submit' className={styles.label}>
+				<button className='submitBtn' type='submit'>
 					Submit
 				</button>
 			</form>

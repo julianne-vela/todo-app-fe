@@ -11,12 +11,15 @@ export default class LoginForm extends Component {
 
 	render() {
 		return (
-			<main>
-				<h1>Sign In</h1>
-				<UserForm
-					auth={signInUser}
-					handleFormSubmit={this.handleFormSubmit}
-				/>
+			<main className='authPage'>
+				<section className='wrapper'>
+					<h1 className='title'>Sign In</h1>
+					<UserForm
+						className='authForm'
+						auth={signInUser}
+						handleFormSubmit={this.handleFormSubmit}
+					/>
+				</section>
 			</main>
 		);
 	}

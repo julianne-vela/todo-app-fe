@@ -4,6 +4,7 @@ import {
 	addTodo,
 	completeTodo,
 } from '../Components/Utils/api-utils.js';
+import './TodoList.css';
 
 export default class TodoList extends Component {
 	state = {
@@ -36,25 +37,37 @@ export default class TodoList extends Component {
 	};
 	render() {
 		const { todos, todo } = this.state;
-
-		console.log(todo);
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input value={todo} onChange={this.handleTodoChange} />
-					<button>Add Todo</button>
+			<main className='todoPage'>
+				<h1 className='todoTitle'>TODO</h1>
+				<form className='todoAdd' onSubmit={this.handleSubmit}>
+					<label className='oval'></label>
+					<input
+						className='formInput default'
+						value={todo}
+						placeholder='Create a new todo...'
+						onChange={this.handleTodoChange}
+					/>
+					{/* <button>Add Todo</button> */}
 				</form>
 				{!todos.length && <p>Woohoo! You've completed your tasks!</p>}
-				{todos.map((todo) => (
-					<p
-						key={`${todo.todo}-${todo.id}`}
-						onClick={() => this.handleComplete(todo.id)}
-						className={`
+				<aside className='todoList'>
+					{todos.map((todo) => (
+						<div
+							className={`
                             todo ${todo.completed ? 'completed' : ''}`}>
-						{todo.todo}
-					</p>
-				))}
-			</div>
+							<label
+								key={`label + ${todo.todo}`}
+								className='oval'></label>
+							<p
+								key={`${todo.todo}-${todo.id}`}
+								onClick={() => this.handleComplete(todo.id)}>
+								{todo.todo}
+							</p>
+						</div>
+					))}
+				</aside>
+			</main>
 		);
 	}
 }
